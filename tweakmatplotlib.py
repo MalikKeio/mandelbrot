@@ -17,6 +17,7 @@ def _newcall_(self, X, alpha=None, bytes=False):
         xa = xma.filled()             # Fill to avoid infs, etc.
         del xma
 
+    self._lut[0] = [0, 0, 0, 1]
     # Calculations with native byteorder are faster, and avoid a
     # bug that otherwise can occur with putmask when the last
     # argument is a numpy scalar.
@@ -71,10 +72,5 @@ def _newcall_(self, X, alpha=None, bytes=False):
     lut.take(xa, axis=0, mode='clip', out=rgba)
     if vtype == 'scalar':
         rgba = tuple(rgba[0, :])
-    if len(rgba.shape) == 3:
-        for i in range(rgba.shape[0]):
-            for j in range(rgba.shape[1]):
-                if np.allclose(rgba[i,j], [0, 0, 0.5, 1]):
-                    rgba[i,j] = [0, 0, 0, 1]
     return rgba
 Colormap.__call__ = _newcall_
