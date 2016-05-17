@@ -43,7 +43,7 @@ for i in range(0, SIZE):
     for j in range(SIZE//2+1, SIZE):
         out[j,i] = out[SIZE-j, i]
 print("%d/%d" % (SIZE,SIZE))
-np.savetxt("out.csv", out, delimiter=",")
+np.savetxt("out.csv", out, fmt="%d", delimiter=",")
 plt.imshow(out)
 colorbar = plt.colorbar()
 plt.show()
