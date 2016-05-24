@@ -28,7 +28,6 @@ PRECISION = args.precision
 
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib import cm
 import tweakmatplotlib
 
 SIZE = int(4/PRECISION)
